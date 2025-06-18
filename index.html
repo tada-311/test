@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>GitHub Pages テスト</title>
+  <meta charset="UTF-8" />
+  <title>座標変換フォーム</title>
 </head>
 <body>
-  <h1>こんにちは、GitHub Pages！</h1>
-  <p>このページは GitHub Pages で公開されています。</p>
+  <h1>座標変換フォーム</h1>
+
+  <form id="coordForm">
+    <label for="easting">Y座標 (easting) を入力:</label><br />
+    <input type="number" id="easting" name="easting" step="any" required /><br /><br />
+
+    <label for="northing">X座標 (northing) を入力:</label><br />
+    <input type="number" id="northing" name="northing" step="any" required /><br /><br />
+
+    <label for="zone">系番号 (0なら自動判別、1〜19で指定):</label><br />
+    <input type="number" id="zone" name="zone" min="0" max="19" value="0" required /><br /><br />
+
+    <button type="submit">変換実行</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    // ここにJavaScriptで処理を追加する予定です
+    document.getElementById('coordForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const easting = parseFloat(document.getElementById('easting').value);
+      const northing = parseFloat(document.getElementById('northing').value);
+      const zone = parseInt(document.getElementById('zone').value);
+
+      // 今は仮に結果表示だけ
+      document.getElementById('result').textContent = 
+        `入力値: Y座標=${easting}, X座標=${northing}, 系番号=${zone}`;
+    });
+  </script>
 </body>
 </html>
